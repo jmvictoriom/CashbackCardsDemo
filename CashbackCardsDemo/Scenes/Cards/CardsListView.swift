@@ -13,6 +13,7 @@ struct CardsListView: View {
     @State private var isLoading = true
     @State private var appeared = false
     @State private var selectedCard: BankCard?
+    @State private var showPromoBanner = false
 
     private let cards: [BankCard] = [.debitCard, .creditCard]
 
@@ -65,6 +66,11 @@ struct CardsListView: View {
         .navigationDestination(item: $selectedCard) { card in
             CardDetailView(card: card)
         }
+        .promoBanner(
+            isShowing: $showPromoBanner,
+            title: "Nueva Visa Travel disponible",
+            subtitle: "Solicítala ahora y viaja tranquilo"
+        )
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + Layout.loadDelay) {
                 withAnimation(.easeOut(duration: 0.3)) {
@@ -73,6 +79,12 @@ struct CardsListView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     withAnimation {
                         appeared = true
+                    }
+                }
+                // Show promo banner ~1.5s after content appears (~2.4s total)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
+                        showPromoBanner = true
                     }
                 }
             }

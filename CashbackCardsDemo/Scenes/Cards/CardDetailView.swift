@@ -13,7 +13,7 @@ struct CardDetailView: View {
     let card: BankCard
 
     @State private var appeared = false
-    @State private var isFlipped = false
+    @State private var showingBack = false
     @State private var flipDegrees: Double = 0
     @State private var showCustomize = false
     @State private var currentGradient: CardGradient
@@ -92,15 +92,22 @@ struct CardDetailView: View {
             }
             .staggered(index: 0, appeared: $appeared)
 
-            // Animated card
-            CreditCardView(
-                card: card,
-                gradient: currentGradient,
-                showRefreshButton: true,
-                onRefresh: {
-                    flipCard()
+            // Animated card with flip
+            ZStack {
+                if showingBack {
+                    CardBackView(card: card, gradient: currentGradient)
+                        .scaleEffect(x: -1, y: 1)
+                } else {
+                    CreditCardView(
+                        card: card,
+                        gradient: currentGradient,
+                        showRefreshButton: true,
+                        onRefresh: {
+                            flipCard()
+                        }
+                    )
                 }
-            )
+            }
             .scaleEffect(cardScale)
             .rotation3DEffect(
                 .degrees(flipDegrees),
@@ -218,8 +225,13 @@ struct CardDetailView: View {
     // MARK: - Helpers
 
     private func flipCard() {
-        withAnimation(.spring(response: Layout.flipDuration, dampingFraction: 0.7)) {
-            flipDegrees += 360
+        let target = showingBack ? 0.0 : 180.0
+        withAnimation(.spring(response: Layout.flipDuration, dampingFraction: 0.8)) {
+            flipDegrees = target
+        }
+        // Swap content at ~35% of the flip (when card is edge-on at 90°)
+        DispatchQueue.main.asyncAfter(deadline: .now() + Layout.flipDuration * 0.35) {
+            showingBack.toggle()
         }
     }
 

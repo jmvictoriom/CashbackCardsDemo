@@ -17,6 +17,7 @@ struct CashbackView: View {
     @State private var appeared = false
     @State private var showToast = false
     @State private var showSearch = false
+    @State private var showOnboarding = true
     @State private var selectedBrand: Brand?
     @Namespace private var heroNamespace
 
@@ -40,6 +41,10 @@ struct CashbackView: View {
         .navigationTitle("Cashback")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(false)
+        .sheet(isPresented: $showOnboarding) {
+            CashbackOnboardingSheet()
+                .presentationDetents([.large])
+        }
         .sheet(isPresented: $showSearch) {
             BrandSearchView()
         }
@@ -306,20 +311,28 @@ struct CashbackView: View {
                 )
                 .frame(width: Layout.brandGridHeight, height: Layout.brandGridHeight)
                 .overlay {
-                    VStack(spacing: 6) {
-                        ZStack {
-                            Circle()
-                                .fill(brand.logoColor)
-                                .frame(width: 44, height: 44)
+                    ZStack {
+                        // Large SF Symbol background decoration
+                        Image(systemName: brand.gridSymbol)
+                            .font(.system(size: 60, weight: .bold))
+                            .foregroundStyle(brand.logoColor.opacity(0.15))
+                            .offset(x: 20, y: -10)
 
-                            Text(brand.logoLetter)
-                                .font(.system(size: brand.logoLetter.count > 2 ? 9 : 16, weight: .bold))
-                                .foregroundStyle(.white)
+                        VStack(spacing: 6) {
+                            ZStack {
+                                Circle()
+                                    .fill(brand.logoColor)
+                                    .frame(width: 44, height: 44)
+
+                                Text(brand.logoLetter)
+                                    .font(.system(size: brand.logoLetter.count > 2 ? 9 : 16, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
+
+                            Text(brand.name)
+                                .font(.caption.bold())
+                                .foregroundStyle(.primary)
                         }
-
-                        Text(brand.name)
-                            .font(.caption.bold())
-                            .foregroundStyle(.primary)
                     }
                 }
 

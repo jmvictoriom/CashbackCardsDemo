@@ -4,6 +4,9 @@ struct BankCard: Identifiable {
     let id = UUID()
     let type: CardType
     let lastFour: String
+    let fullNumber: String
+    let expiryDate: String
+    let cvv: String
     let network: String
     let gradient: CardGradient
     var spentThisMonth: Double
@@ -50,6 +53,9 @@ extension BankCard {
     static let debitCard = BankCard(
         type: .debit,
         lastFour: "1093",
+        fullNumber: "4821 7634 5590 1093",
+        expiryDate: "09/28",
+        cvv: "347",
         network: "VISA",
         gradient: CardGradient(
             colors: [
@@ -67,6 +73,9 @@ extension BankCard {
     static let creditCard = BankCard(
         type: .credit,
         lastFour: "0221",
+        fullNumber: "4917 3820 1456 0221",
+        expiryDate: "03/27",
+        cvv: "512",
         network: "VISA",
         gradient: CardGradient(
             colors: [

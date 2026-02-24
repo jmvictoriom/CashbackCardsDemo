@@ -20,6 +20,7 @@ struct CardCustomizeView: View {
     @State private var rotationDegrees: Double = 0
     @State private var cardOffset: CGFloat = 0
     @State private var previousDesignIndex: Int = 0
+    @State private var showingBackInTransition = false
 
     init(card: BankCard, currentGradient: Binding<CardGradient>) {
         self.card = card
@@ -113,12 +114,19 @@ struct CardCustomizeView: View {
             .offset(x: 20)
             .opacity(0.4)
 
-            // Main card
-            CreditCardView(
-                card: card,
-                gradient: selectedDesign.gradient,
-                showRefreshButton: false
-            )
+            // Main card with flash back
+            ZStack {
+                if showingBackInTransition {
+                    CardBackView(card: card, gradient: selectedDesign.gradient)
+                        .scaleEffect(x: -1, y: 1)
+                } else {
+                    CreditCardView(
+                        card: card,
+                        gradient: selectedDesign.gradient,
+                        showRefreshButton: false
+                    )
+                }
+            }
             .rotation3DEffect(
                 .degrees(rotationDegrees),
                 axis: (x: 0.1, y: 1, z: 0.05),
@@ -196,17 +204,23 @@ struct CardCustomizeView: View {
         let newIndex = CardDesign.designs.firstIndex(of: design) ?? 0
         let direction: Double = newIndex > currentIndex ? 1 : -1
 
-        // Phase 1: Rotate out
-        withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
-            rotationDegrees = direction * 45
-            cardOffset = -direction * 30
+        // Phase 1: Rotate out (A18: 90° and 60px)
+        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+            rotationDegrees = direction * 90
+            cardOffset = -direction * 60
         }
 
-        // Phase 2: Switch design and rotate in
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        // A19: Flash the back at ~0.15s
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            showingBackInTransition = true
+        }
+
+        // Phase 2: Switch design and rotate in (A18: delay 0.25s)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             selectedDesign = design
-            rotationDegrees = -direction * 45
-            cardOffset = direction * 30
+            showingBackInTransition = false
+            rotationDegrees = -direction * 90
+            cardOffset = direction * 60
 
             withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
                 rotationDegrees = 0

@@ -11,6 +11,8 @@ struct Brand: Identifiable, Hashable {
     let conditions: [BrandCondition]
     let ctaText: String
     let daysLeft: Int
+    let heroSymbol: String
+    let gridSymbol: String
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -41,7 +43,9 @@ extension Brand {
             BrandCondition(icon: "eurosign.circle", text: "Gasto mínimo de 50€, reembolso máximo de 15€")
         ],
         ctaText: "Visitar web Europcar",
-        daysLeft: 12
+        daysLeft: 12,
+        heroSymbol: "car.fill",
+        gridSymbol: "car.fill"
     )
 
     static let vicio = Brand(
@@ -57,7 +61,9 @@ extension Brand {
             BrandCondition(icon: "eurosign.circle", text: "Gasto mínimo de 20€, reembolso máximo de 10€")
         ],
         ctaText: "Visitar web Vicio",
-        daysLeft: 12
+        daysLeft: 12,
+        heroSymbol: "fork.knife",
+        gridSymbol: "fork.knife"
     )
 
     static let northFace = Brand(
@@ -73,7 +79,9 @@ extension Brand {
             BrandCondition(icon: "eurosign.circle", text: "Gasto mínimo de 100€, reembolso máximo de 25€")
         ],
         ctaText: "Visitar web The North Face",
-        daysLeft: 12
+        daysLeft: 12,
+        heroSymbol: "mountain.2.fill",
+        gridSymbol: "mountain.2.fill"
     )
 
     static let rayBan = Brand(
@@ -89,7 +97,9 @@ extension Brand {
             BrandCondition(icon: "eurosign.circle", text: "Gasto mínimo de 100€, reembolso máximo de 25€")
         ],
         ctaText: "Visitar web Ray-Ban",
-        daysLeft: 3
+        daysLeft: 3,
+        heroSymbol: "sunglasses",
+        gridSymbol: "sunglasses"
     )
 
     static let lego = Brand(
@@ -105,7 +115,9 @@ extension Brand {
             BrandCondition(icon: "eurosign.circle", text: "Gasto mínimo de 50€, reembolso máximo de 20€")
         ],
         ctaText: "Visitar web Lego",
-        daysLeft: 30
+        daysLeft: 30,
+        heroSymbol: "building.2.fill",
+        gridSymbol: "building.2.fill"
     )
 
     static let featured: [Brand] = [europcar, vicio, northFace]

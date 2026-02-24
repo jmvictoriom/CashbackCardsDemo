@@ -40,6 +40,7 @@ struct BrandDetailView: View {
         GeometryReader { geo in
             let offset = geo.frame(in: .global).minY
             let height = max(Layout.heroHeight + (offset > 0 ? offset : 0), Layout.heroMinHeight)
+            let zoomScale = 1.0 + abs(min(offset, 0)) / 500.0
 
             ZStack(alignment: .bottomLeading) {
                 // Background gradient simulating product image
@@ -65,10 +66,10 @@ struct BrandDetailView: View {
                             .frame(width: 150, height: 150)
                             .offset(x: -80, y: 40)
 
-                        // Large brand watermark
-                        Text(brand.logoLetter)
-                            .font(.system(size: 120, weight: .bold))
-                            .foregroundStyle(brand.logoColor.opacity(0.08))
+                        // Large SF Symbol watermark
+                        Image(systemName: brand.heroSymbol)
+                            .font(.system(size: 100, weight: .bold))
+                            .foregroundStyle(brand.logoColor.opacity(0.12))
                             .rotationEffect(.degrees(-15))
                             .offset(x: 40, y: -20)
                     }
@@ -106,6 +107,7 @@ struct BrandDetailView: View {
                 .opacity(appeared ? 1 : 0)
                 .offset(y: appeared ? 0 : 20)
             }
+            .scaleEffect(zoomScale)
             .frame(width: geo.size.width, height: height)
             .clipped()
             .offset(y: offset > 0 ? -offset : 0)
