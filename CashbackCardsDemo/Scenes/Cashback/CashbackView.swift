@@ -43,7 +43,10 @@ struct CashbackView: View {
         .navigationBarBackButtonHidden(false)
         .sheet(isPresented: $showOnboarding) {
             CashbackOnboardingSheet()
-                .presentationDetents([.large])
+                .presentationDetents([.fraction(0.58), .large])
+                .presentationBackground(.clear)
+                .presentationBackgroundInteraction(.enabled(upThrough: .fraction(0.58)))
+                .presentationDragIndicator(.hidden)
         }
         .sheet(isPresented: $showSearch) {
             BrandSearchView()

@@ -11,7 +11,7 @@ final class CashbackFlowUITests: CashbackCardsDemoUITests {
         cashbackCard.tap()
 
         // Onboarding sheet should appear with "Continuar" button
-        XCTAssertTrue(waitForText("Ahorra en tus compras favoritas", timeout: 5))
+        XCTAssertTrue(waitForText("Compra más y gasta menos", timeout: 5))
     }
 
     func testOnboardingDismissWithContinue() throws {

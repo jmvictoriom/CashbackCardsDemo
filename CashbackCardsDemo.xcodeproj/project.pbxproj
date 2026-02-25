@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -74,12 +74,12 @@
 		43474A0B0F146C42B7B73389 /* CardFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFlowUITests.swift; sourceTree = "<group>"; };
 		4C2577B5DE37D487E17617F0 /* CashbackViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackViewTests.swift; sourceTree = "<group>"; };
 		50BFC69E75BDEA3CFDA4CDEE /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		5A316C9E9C5F7F288397CBCC /* CashbackCardsDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CashbackCardsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A316C9E9C5F7F288397CBCC /* CashbackCardsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CashbackCardsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD572731F563E0BBCC67C97 /* CardCustomizeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCustomizeView.swift; sourceTree = "<group>"; };
 		62B033C57E9CE14B083E0921 /* PromoBannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannerUITests.swift; sourceTree = "<group>"; };
 		64C3984CFFBE6F6A15ADB652 /* CashbackOnboardingSheetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackOnboardingSheetTests.swift; sourceTree = "<group>"; };
 		652EB97089B7DA028ABD406C /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
-		6B261737E62948881C3788AB /* CashbackCardsDemoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CashbackCardsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B261737E62948881C3788AB /* CashbackCardsDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CashbackCardsDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7038B407AC28F65342D4D070 /* BrandSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSearchView.swift; sourceTree = "<group>"; };
 		72DA85FD783D7A4EB853F1A0 /* CashbackFlowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashbackFlowUITests.swift; sourceTree = "<group>"; };
 		7DD7152C8156881753AE7637 /* PromoBannerModifierTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoBannerModifierTests.swift; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		9A0D56271B534407003B043A /* TransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		A4358078553C849D8C837EC4 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		A6A6FA4305ABDFAF14C00624 /* CardDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailView.swift; sourceTree = "<group>"; };
-		AA48155458AC08752DA32C9B /* CashbackCardsDemoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = CashbackCardsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA48155458AC08752DA32C9B /* CashbackCardsDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CashbackCardsDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B328B6B24A00CF04FF281D35 /* BrandSearchViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSearchViewTests.swift; sourceTree = "<group>"; };
 		B5EBCA028593BD11D3BE9306 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BC3D8E7868D2DD86A96179D5 /* CardsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListView.swift; sourceTree = "<group>"; };
@@ -355,7 +355,6 @@
 			);
 			mainGroup = 950B62E6D304EAFABB559197;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -452,7 +451,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemoTests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CashbackCardsDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CashbackCardsDemo";
 			};
 			name = Release;
@@ -470,7 +473,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemoUITests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = CashbackCardsDemo;
 			};
 			name = Release;
@@ -607,7 +614,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemoTests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CashbackCardsDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CashbackCardsDemo";
 			};
 			name = Debug;
@@ -632,7 +643,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemo;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -649,7 +664,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemoUITests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = CashbackCardsDemo;
 			};
 			name = Debug;
@@ -674,7 +693,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.demo.CashbackCardsDemo;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};

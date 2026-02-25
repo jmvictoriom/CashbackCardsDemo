@@ -35,11 +35,11 @@ struct CashbackOnboardingSheetTests {
 
     @Test("Bullet points have 3 items with known icons")
     func bulletPoints() {
-        let icons = ["percent", "clock.arrow.circlepath", "star.fill"]
+        let icons = ["globe.europe.africa", "creditcard", "eurosign.circle"]
         #expect(icons.count == 3)
-        #expect(icons[0] == "percent")
-        #expect(icons[1] == "clock.arrow.circlepath")
-        #expect(icons[2] == "star.fill")
+        #expect(icons[0] == "globe.europe.africa")
+        #expect(icons[1] == "creditcard")
+        #expect(icons[2] == "eurosign.circle")
     }
 
     // MARK: - Spring and entrance animation parameters
